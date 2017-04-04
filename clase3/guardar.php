@@ -5,8 +5,9 @@
     if(in_array('Escribir', $_POST))
     {
         $nombre = $_POST['nombre'];
-        $archivo = fopen("datos.txt", "w");
+        $archivo = fopen($_POST['archivo'], "w");
         fwrite($archivo, $nombre);
+        echo "GUARDADO";
         fclose($archivo);    
     }
     else

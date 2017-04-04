@@ -12,7 +12,7 @@
             $this->_razonSocial = $razonSocial;
             
             $this->_empleados = array(); 
-            fabrica::traerEmpleado($this->_empleados);
+            $this->_empleados = $this->traerEmpleado();
             
         }
         function agregarEmpleado($empleado)
@@ -60,9 +60,9 @@
             }
             fclose($archivo);
         }
-        static function traerEmpleado($empleados) // SE LLAMA EN EL CONSTRUCTOR
+        function traerEmpleado() // SE LLAMA EN EL CONSTRUCTOR
         {
-            
+            $empleados = array();
             if(file_exists("fabrica.txt"))
             {
                 $archivo = fopen("fabrica.txt", "r");
@@ -71,25 +71,18 @@
                 {
                     $empleadoLinea = fgets($archivo);
                     $empleado = explode("-", $empleadoLinea);
-                    if($empleado == false)
-                        break;
-                    else
+                    if(count($empleado) == 6)
                     {
                         $empleadoArray = new empleado($empleado[0], $empleado[1], $empleado[2], $empleado[3], $empleado[4],$empleado[5]);
-                    
-                        array_push($empleados, $empleado);
+                        array_push($empleados, $empleadoArray);
+                        
                     }
-                    
-                    
-                    
                 }
                 fclose($archivo);
+                
+                
                 return $empleados;
 
-            }
-            else
-            {
-                return $empleados;
             }
 
         }
