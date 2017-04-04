@@ -12,6 +12,15 @@
     }
     else
     {
+        if(file_exists($_POST['archivo']))
+        {
+            $archivoLeido = fopen($_POST['archivo'], "r");
+            $pagina = fopen("cargar.html", "r");
+            $cargar = fread($pagina, 1000);
+            
+            $nombre = fread($archivoLeido, 1000);
+            echo $cargar.$nombre."<h2> </body> </html>";
+        }
         
     }
     
