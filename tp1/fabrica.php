@@ -71,11 +71,14 @@
                 {
                     $empleadoLinea = fgets($archivo);
                     $empleado = explode("-", $empleadoLinea);
+                    if($empleado == false)
+                        break;
+                    else
+                    {
+                        $empleadoArray = new empleado($empleado[0], $empleado[1], $empleado[2], $empleado[3], $empleado[4],$empleado[5]);
                     
-                    
-                    $empleadoArray = new empleado($empleado[0], $empleado[1], $empleado[2], $empleado[3], $empleado[4],$empleado[5]);
-                    
-                    array_push($empleados, $empleado);
+                        array_push($empleados, $empleado);
+                    }
                     
                     
                     
