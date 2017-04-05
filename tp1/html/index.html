@@ -2,10 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>asd</title>
+        <title>Empleado</title>
     </head>
     <body>
-        <form action="administracion.php">
+        <form action="../administracion.php" method="POST">
             <fieldset>
                 <legend> Empleado:</legend>
                 <label for="idName">Nombre :</label>
@@ -13,6 +13,18 @@
                 <br>
                 <label for="idApellido">Apellido: </label>
                 <input type="text" id="idApellido" name="apellido">
+                <br>
+                <label for="idDni">Dni: </label>
+                <input type="text" id="idDni" name="dni">
+                <br>
+                <!-- PONER RADIOBUTTON CON F O M -->
+                <label for="idLegajo">Legajo:</label>
+                <input type="text" id="idLegajo" name="legajo">
+                <br>
+                <label for="idSueldo"> Sueldo</label>
+                <input type="text" id="idLegajo" name="sueldo">
+                <br>
+                <input type="submit" value="Crear">
             </fieldset>
         </form>    
     </body>

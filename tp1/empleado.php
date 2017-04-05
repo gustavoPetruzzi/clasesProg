@@ -31,14 +31,10 @@
 
         function toString()
         {
-            return parent::toString()."-Sueldo:".$this->_sueldo."-Legajo:".$this->_legajo."<br>";
+            return parent::toString().$this->_legajo."-".$this->_sueldo;
             
         }
-        function toStringGuardar()
-        {
-            return parent::toStringGuardar()."-".$this->_sueldo."-".$this->_legajo."\n";
-            
-        }
+        
     }
     
 

@@ -9,9 +9,7 @@
         private $_empleados;
         function __construct($razonSocial)
         {
-            $this->_razonSocial = $razonSocial;
-            
-            $this->_empleados = array(); 
+            $this->_razonSocial = $razonSocial; 
             $this->_empleados = $this->traerEmpleado();
             
         }
@@ -56,7 +54,8 @@
             $archivo = fopen("fabrica.txt", "w");
             foreach ($this->_empleados as $empleado) 
             {
-                fwrite($archivo,$empleado->toStringGuardar());
+                $dato = $empleado->toString()."\n";
+                fwrite($archivo,$dato);
             }
             fclose($archivo);
         }
@@ -73,17 +72,14 @@
                     $empleado = explode("-", $empleadoLinea);
                     if(count($empleado) == 6)
                     {
-                        $empleadoArray = new empleado($empleado[0], $empleado[1], $empleado[2], $empleado[3], $empleado[4],$empleado[5]);
+                        $empleadoArray = new empleado($empleado[0], $empleado[1], $empleado[2], $empleado[3], $empleado[4],str_replace("\n"," ",$empleado[5]));
                         array_push($empleados, $empleadoArray);
                         
                     }
                 }
                 fclose($archivo);
-                
-                
-                return $empleados;
-
             }
+            return $empleados;
 
         }
         

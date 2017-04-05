@@ -36,12 +36,9 @@
 
         function toString()
         {
-            return "Nombre:".$this->_nombre."-Apellido:".$this->_apellido."-Dni:".$this->_dni."-Sexo:".$this->_sexo;
+            return $this->_nombre."-".$this->_apellido."-".$this->_dni."-".$this->_sexo."-";
         }
-        function toStringGuardar()
-        {
-            return $this->_nombre."-".$this->_apellido."-".$this->_dni."-".$this->_sexo;
-        }
+        
         abstract function hablar($idioma);
 
 

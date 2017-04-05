@@ -4,6 +4,11 @@
      // AGARRA SOLAMENTE LO PASADO POR POST
     if(in_array('Escribir', $_POST))
     {
+        if(file_exists($_POST['archivo']))
+        {
+            if(!copy($_POST['archivo'], "backup/guardate-".date("d-m-Y").".txt"))
+                echo "error al hacer backup";
+        }
         $nombre = $_POST['nombre'];
         $archivo = fopen($_POST['archivo'], "w");
         fwrite($archivo, $nombre);
