@@ -13,7 +13,7 @@
         {
             parent::__construct($nombre, $apellido, $dni,$sexo);
             $this->_legajo = $legajo;
-            $this->_sueldo = $sueldo;
+            $this->_sueldo = $sueldo;   
         }
         function getLegajo()
         {
