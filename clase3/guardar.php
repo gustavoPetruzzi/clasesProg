@@ -21,7 +21,7 @@
         {
             $archivoLeido = fopen($_POST['archivo'], "r");
             $pagina = fopen("cargar.html", "r");
-            $cargar = fread($pagina, 1000);
+            $cargar = fread($pagina, 1000); // CAMBIAR POR FILESIZE
             
             $nombre = fread($archivoLeido, 1000);
             echo $cargar.$nombre."<h2> </body> </html>";
