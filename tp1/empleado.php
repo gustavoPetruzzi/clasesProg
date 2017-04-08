@@ -8,6 +8,7 @@
     {
         protected $_legajo;
         protected $_sueldo;
+        protected $_pathFoto;
 
         function __construct($nombre, $apellido, $dni, $sexo, $legajo, $sueldo)
         {
@@ -22,6 +23,14 @@
         function getSueldo()
         {
             return $this->_sueldo;
+        }
+        function getPathFoto()
+        {
+            return $this->_pathFoto;
+        }
+        function setPathFoto($path)
+        {
+            $this->_pathFoto = $path;
         }
 
         function hablar($idioma)

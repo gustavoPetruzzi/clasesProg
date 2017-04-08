@@ -1,8 +1,10 @@
 <?php
     include_once("empleado.php");
 
-    //var_dump($_POST);
+    var_dump($_POST);
+    var_dump($_FILES);
     //Tengo que validar lo que pasan?
+    /*
     function cargarIndex()
     {
         $indexHandler = fopen("empleados.txt", "r");
@@ -16,13 +18,14 @@
         $archivo = fopen("empleados.txt","a");
         if(fwrite($archivo, $empleado->toString()."\r\n") === FALSE)
         {
-
-        }    
+            echo "<a href='html/index.html'>Pagina Principal</a>";
+        }
+        else
+        {
+            echo "<a href='mostrar.php'>Mostrar Empleados</a>";
+        }   
     }
-    else
-    {
-       DOMDocument::loadHTMLFile("html/index.html");
-    }
-        
     
+        
+    */
 ?>
