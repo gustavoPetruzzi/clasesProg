@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Empleado</title>
-    </head>
-    <body>
-        <form action="../administracion.php" method="POST">
-            <fieldset>
-                <legend> Empleado:</legend>
-                <label for="idName">Nombre :</label>
-                <input type="text" id="idName" name="nombre">
-                <br>
-                <label for="idApellido">Apellido: </label>
-                <input type="text" id="idApellido" name="apellido">
-                <br>
-                <label for="idDni">Dni: </label>
-                <input type="text" id="idDni" name="dni">
-                <br>
-                <!-- PONER RADIOBUTTON CON F O M -->
-                <label for="idSexo">Sexo: </label>
-                <input type="radio" name="sexo" value="M">Masculino 
-                <input type="radio" name="sexo" value="F"> Femenino
-                <br>
-                <label for="idLegajo">Legajo:</label>
-                <input type="text" id="idLegajo" name="legajo">
-                <br>
-                <label for="idSueldo"> Sueldo</label>
-                <input type="text" id="idLegajo" name="sueldo">
-                <br>
-                <input type="file" id="idFoto" name="foto">
-                <br>
-                <input type="submit" value="Crear">
-            </fieldset>
-        </form>    
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Empleado</title>
+</head>
+
+<body>
+    <form action="../administracion.php" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            <legend> Empleado:</legend>
+            <label for="idName">Nombre :</label>
+            <input type="text" id="idName" name="nombre">
+            <br>
+            <label for="idApellido">Apellido: </label>
+            <input type="text" id="idApellido" name="apellido">
+            <br>
+            <label for="idDni">Dni: </label>
+            <input type="text" id="idDni" name="dni">
+            <br>
+            <!-- PONER RADIOBUTTON CON F O M -->
+            <label for="idSexo">Sexo: </label>
+            <input type="radio" name="sexo" value="M">Masculino
+            <input type="radio" name="sexo" value="F"> Femenino
+            <br>
+            <label for="idLegajo">Legajo:</label>
+            <input type="text" id="idLegajo" name="legajo">
+            <br>
+            <label for="idSueldo"> Sueldo</label>
+            <input type="text" id="idLegajo" name="sueldo">
+            <br>
+            <input type="file" id="idFoto" name="foto">
+            <br>
+            <input type="submit" value="Crear">
+        </fieldset>
+    </form>
+</body>
+
 </html>
