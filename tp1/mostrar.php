@@ -15,6 +15,7 @@
                 echo "<br>";
                 echo "<img src=\"".$empleadoArray->getPathFoto()."\">";
                 echo "<br>";
+                
             }
         }
     }
