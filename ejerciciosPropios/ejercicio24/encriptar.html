@@ -10,8 +10,15 @@
 
 <body>
     <h1> ACA SE ENCRIPTA</h1>
-    <form action="encriptar.php">
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+    <form action="encriptar.php" name="confimacion" method ="POST">
+        <textarea  id="" cols="30" rows="10" name="mensaje"></textarea>
+        <br>
+        <label for="lugar">Ingrese el nombre del archivo:</label>
+        <br>
+        <input type="text" name="lugar">
+        <br>
+        <input type="submit" value="Enviar">
+        
     </form>
 </body>
 
