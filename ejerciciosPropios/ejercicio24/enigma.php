@@ -31,10 +31,8 @@
                 {
                     $linea = fgets($archivo);
                     $string = str_split($linea);
-                    foreach ($string as $letra ) {
-                        
-                        $mensajeDescifrado.=chr(ord($letra)-200);
-                    }
+                    for($i=0;$i<count($string);$i+=3)
+                        $mensajeDescifrado .= chr(substr($linea,$i,3)-200);
                 }
             }
             fclose($archivo);
