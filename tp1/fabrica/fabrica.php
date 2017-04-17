@@ -40,7 +40,7 @@
         }
         function toString()
         {
-            $retorno = "Razon Social: ".$this->_razonSocial."<BR>";
+            $retorno = $this->_razonSocial."-";
             foreach($this->_empleados as $empleado)
             {
                 $retorno.=$empleado->toString();

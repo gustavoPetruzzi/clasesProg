@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- <script src="scripts/script.js"></script> -->
     <title>Empleado</title>
 </head>
 
 <body>
-    <form action="../administracion.php" method="POST" enctype="multipart/form-data">
+    <form action="php/agregarEmpleado.php" method="POST" enctype="multipart/form-data">
         <fieldset>
             <legend> Empleado:</legend>
             <label for="idName">Nombre :</label>
@@ -19,7 +20,7 @@
             <label for="idDni">Dni: </label>
             <input type="text" id="idDni" name="dni">
             <br>
-            <!-- PONER RADIOBUTTON CON F O M -->
+
             <label for="idSexo">Sexo: </label>
             <input type="radio" name="sexo" value="M">Masculino
             <input type="radio" name="sexo" value="F"> Femenino
@@ -32,9 +33,12 @@
             <br>
             <input type="file" id="idFoto" name="foto">
             <br>
-            <input type="submit" value="Crear">
+            <button id="agregar"> Agregar empleado</button>
         </fieldset>
     </form>
+    <div id="respuesta">
+
+    </div>
 </body>
 
 </html>

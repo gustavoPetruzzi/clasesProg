@@ -1,6 +1,2 @@
-<<<<<<< Updated upstream
-gustavo-petruzzi-36594810-M-123-312-fotos/36594810-petruzzi.jpg
-=======
-gustavo-petruzzi-36594810-M-344-10000-fotos/36594810-petruzzi.jpg
-gustavo-petruzzi-36594810-M-344-10000-fotos/36594810-petruzzi.jpg
->>>>>>> Stashed changes
+gustavo-petruzzi-36594810-M-123-10000-../fotos/36594810-petruzzi.jpg
+juan-perez-12270110-F-344-3333-../fotos/12270110-perez.jpg
