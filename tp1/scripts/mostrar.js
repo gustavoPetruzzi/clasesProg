@@ -40,13 +40,14 @@ window.onload = function() {
                 var pathFoto = (empleado[6] + "-" + empleado[7]).replace("../", "");
                 foto.src = pathFoto;
 
+                div.appendChild(foto);
                 div.appendChild(nombre);
                 div.appendChild(apellido);
                 div.appendChild(dni);
                 div.appendChild(sexo);
                 div.appendChild(legajo);
                 div.appendChild(sueldo);
-                div.appendChild(foto);
+                
                 principal.appendChild(div);
             }
 
