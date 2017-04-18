@@ -4,7 +4,7 @@
     /**
      * 
      */
-    class empleado extends persona
+    class empleado implements JsonSerializable
     {
         protected $_legajo;
         protected $_sueldo;
@@ -42,6 +42,15 @@
         {
             return parent::toString().$this->_legajo."-".$this->_sueldo."-".$this->_pathFoto;
             
+        }
+        // IMPLEMENTACION DE JSON
+        public function jsonSerialize() {
+            return [
+                'nombre' => $this->getNombre();
+                'apellido' => $this->getApellido();
+                'dni' => $this->getDni();
+                
+            ]
         }
         
     }
