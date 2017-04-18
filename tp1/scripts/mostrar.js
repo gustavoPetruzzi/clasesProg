@@ -13,8 +13,8 @@ window.onload = function() {
             for (var index = 0; index < lineas.length - 1; index++) {
 
                 var div = document.createElement('div');
-                div.className = "col-md-4";
-                alert(lineas[index]);
+                div.className = "col-md-4 col-xs-4";
+                
                 var empleado = lineas[index].split('-');
 
                 var nombre = document.createElement('p');
@@ -54,4 +54,8 @@ window.onload = function() {
         }
     }
     req.send();
+}
+
+function mostrarEmpleados() {
+
 }
