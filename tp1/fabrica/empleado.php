@@ -1,10 +1,10 @@
 <?php
     include_once("persona.php");
-
+    
     /**
      * 
      */
-    class empleado implements JsonSerializable
+    class empleado extends persona implements JsonSerializable
     {
         protected $_legajo;
         protected $_sueldo;
@@ -44,14 +44,19 @@
             
         }
         // IMPLEMENTACION DE JSON
+        
         public function jsonSerialize() {
             return [
-                'nombre' => $this->getNombre();
-                'apellido' => $this->getApellido();
-                'dni' => $this->getDni();
-                
-            ]
+                'nombre' => $this->getNombre(),
+                'apellido' => $this->getApellido(),
+                'dni' => $this->getDni(),
+                'sexo' => $this->getSexo(),
+                'legajo' => $this->getLegajo(),
+                'sueldo' => $this->getSueldo(),
+                'foto' => $this->getPathFoto(),
+            ];
         }
+        
         
     }
     
