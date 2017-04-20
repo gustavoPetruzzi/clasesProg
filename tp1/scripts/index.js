@@ -1,16 +1,14 @@
-window.onload = function() {
-    var agregarEmpleado = document.getElementById('agregar');
-    var mostrarEmpleados = document.getElementById('mostrar');
-    var modificarEmpleados = document.getElementById('modificar');
+$(document).ready( inicializar);
 
-    agregarEmpleado.addEventListener('click', function() {
+function inicializar() {
+    $('#agregar').on('click', function() {
         window.location.href = 'agregarEmpleado.html';
-    });
-    mostrarEmpleados.addEventListener('click', function() {
+    })
+    $('#mostrar').on('click', function() {
         window.location.href = 'mostrar.html';
     })
-    modificarEmpleados.addEventListener('click', function() {
-        window.location.href = modificar.html;
+    $('#modificar').on('click', function() {
+        window.location.href = 'modificar.html';
     })
 
 }

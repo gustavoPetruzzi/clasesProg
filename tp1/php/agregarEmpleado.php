@@ -25,7 +25,7 @@
                 }
                 move_uploaded_file($_FILES['foto']['tmp_name'], "fotos/".$fotoNueva);
                 */
-                move_uploaded_file($_FILES['foto']['tmp_name'], "../fotos/".$fotoNueva);
+                
                 
                 $empleado->setPathFoto($fotoNueva);
                 
@@ -33,6 +33,11 @@
                 {
                     $retorno['exito'] = false;
                     $retorno['mensaje'] = "error al escribir el archivo";
+                }
+                else
+                {
+                    move_uploaded_file($_FILES['foto']['tmp_name'], "../fotos/".$fotoNueva);
+                    $retorno['empleado'] = $empleado;
                 }
             }
             else
@@ -43,7 +48,7 @@
         }
         else
         {
-            $retorno['exito'] = false;
+
             $retorno['mensaje'] = "error agregando los datos";
         }
     }
@@ -53,7 +58,7 @@
     else
         $retorno['link'] ="<a href=\"../index.html\">Volver a cargar </a>"."<p>".$retorno['mensaje']."</p>";
     
-    echo $retorno['link'];
+    echo json_encode($retorno);
     
     
 ?>

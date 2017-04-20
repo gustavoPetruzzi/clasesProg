@@ -3,41 +3,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <script src="scripts/script.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="scripts/agregar.js"> </script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Empleado</title>
 </head>
 
 <body>
-    <form action="php/agregarEmpleado.php" method="POST" enctype="multipart/form-data">
-        <fieldset>
-            <legend> Empleado:</legend>
-            <label for="idName">Nombre :</label>
-            <input type="text" id="idName" name="nombre">
-            <br>
-            <label for="idApellido">Apellido: </label>
-            <input type="text" id="idApellido" name="apellido">
-            <br>
-            <label for="idDni">Dni: </label>
-            <input type="text" id="idDni" name="dni">
-            <br>
+    <div class="jumbotron text-center">
+        <h1>Agregar empleados</h1>
+        <p>Ingrese los datos del empleado.</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-8 ">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <fieldset>
+                        <legend> Empleado:</legend>
+                        <label for="idName">Nombre :</label>
+                        <input type="text" id="idName" name="nombre">
+                        <br>
+                        <label for="idApellido">Apellido: </label>
+                        <input type="text" id="idApellido" name="apellido">
+                        <br>
+                        <label for="idDni">Dni: </label>
+                        <input type="text" id="idDni" name="dni">
+                        <br>
 
-            <label for="idSexo">Sexo: </label>
-            <input type="radio" name="sexo" value="M">Masculino
-            <input type="radio" name="sexo" value="F"> Femenino
-            <br>
-            <label for="idLegajo">Legajo:</label>
-            <input type="text" id="idLegajo" name="legajo">
-            <br>
-            <label for="idSueldo"> Sueldo</label>
-            <input type="text" id="idLegajo" name="sueldo">
-            <br>
-            <input type="file" id="idFoto" name="foto">
-            <br>
-            <button id="agregar"> Agregar empleado</button>
-        </fieldset>
-    </form>
-    <div id="respuesta">
+                        <label for="idSexo">Sexo: </label>
+                        <input type="radio" class="sexo" value="M">Masculino
+                        <input type="radio" class="sexo" value="F"> Femenino
+                        <br>
+                        <label for="idLegajo">Legajo:</label>
+                        <input type="text" id="idLegajo" name="legajo">
+                        <br>
+                        <label for="idSueldo"> Sueldo</label>
+                        <input type="text" id="idSueldo" name="sueldo">
+                        <br>
+                        <input type="file" id="idFoto" name="foto">
+                        <br>
+                    </fieldset>
+                </form>
+                <button class="btn btn-primary" id="agregar"> Agregar empleado</button>
+            </div>
+            <div id="resultado" class="col-md-4 col-sm-4">
+            </div>
+        </div>
+        <div id="link text-center" class="row">
 
+        </div>
     </div>
 </body>
 
