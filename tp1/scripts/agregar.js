@@ -22,9 +22,7 @@ function envioReq()
         async: true,
     })
     .done(function(data){
-        alert(data);
         var info = JSON.parse(data);
-        alert(info.mensaje);
         var src = "fotos/" + info.empleado.foto;
 
         lineas = "<h3> Empleado agregado!</h3>";

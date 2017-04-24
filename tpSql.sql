@@ -37,6 +37,16 @@ INSERT INTO `envios`(`numero`, `pNumero`, `cantidad`) VALUES (100, 1, 500), (100
 3. SELECT * FROM `envios` WHERE cantidad >= 200 AND cantidad <= 300
 4. SELECT SUM(cantidad) FROM envios
 5. SELECT pNumero from envios LIMIT 3
+6. SELECT proveedores.nombre, productos.pNombre FROM `envios`, productos, proveedores WHERE envios.numero = proveedores.numero AND envios.pNumero = productos.pNumero 
             /* DEVUELVE LOS NUMEROS CON MUCHOS DECIMALES */
 7. SELECT envios.cantidad * productos.precio FROM envios, productos WHERE envios.pNumero = productos.pNumero 
 8. SELECT SUM(envios.cantidad) FROM envios WHERE envios.pNumero = 1 AND envios.numero = 102
+
+/* Current selection does not contain a unique column. Grid edit, checkbox, Edit, Copy and Delete features are not available. */
+10. SELECT proveedores.domicilio, proveedores.localidad FROM proveedores WHERE proveedores.nombre LIKE '%i%' 
+11. INSERT INTO `productos`(`pNumero`, `pNombre`, `precio`, `tamaño`) VALUES (4, "chocolate", 25.35, "chico")
+12. INSERT INTO `proveedores`(`numero`) VALUES (103)
+13. INSERT INTO `proveedores`(`numero`, `nombre`, `localidad`) VALUES (107, "rosales", "la plata")
+14. UPDATE `productos` SET `precio`=97.50 WHERE tamaño = 'grande' 
+16. DELETE FROM 'productos' WHERE pnumero = 1
+

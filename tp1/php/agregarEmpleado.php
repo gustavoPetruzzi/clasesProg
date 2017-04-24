@@ -1,5 +1,6 @@
 <?php
     include_once("../fabrica/empleado.php");
+    include_once("basedatos.php");
     $retorno['exito'] = true;
 
     if(isset($_POST))
@@ -16,7 +17,7 @@
             {
                 
                 $empleado = new empleado($_POST['nombre'], $_POST['apellido'], $_POST['dni'], $_POST['sexo'], $_POST['legajo'], $_POST['sueldo']);
-                $archivo = fopen("../empleados.txt","a");
+                
                 /*
                 COPIAR FOTO NUEVA Y MOVER VIEJA
                 if(in_array($fotoNueva, $pathUsados))
@@ -26,9 +27,15 @@
                 move_uploaded_file($_FILES['foto']['tmp_name'], "fotos/".$fotoNueva);
                 */
                 
-                
                 $empleado->setPathFoto($fotoNueva);
                 
+                $base = baseDeDatos::agregarEmpleado($empleado);
+                if(!$base['exito']){
+                    $retorno['exito'] = false;
+                    $retorno['mensaje'] = $base['mensaje'];
+                }
+
+                $archivo = fopen("../empleados.txt","a");
                 if(fwrite($archivo, $empleado->toString()."\r\n") === FALSE)
                 {
                     $retorno['exito'] = false;
