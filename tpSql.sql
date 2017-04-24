@@ -29,3 +29,14 @@ INSERT INTO `productos`(`pNumero`, `pNombre`, `precio`, `tamaño`) VALUES (1, "c
 
 INSERT INTO `envios`(`numero`, `pNumero`, `cantidad`) VALUES (100, 1, 500), (100, 2, 1500), (100, 3, 100),
 (101, 2, 55), (101, 3, 225), (102, 1, 600), (102, 2, 300)
+
+/*                        CONSULTAS                       */
+
+1. SELECT * FROM `productos` ORDER by pNombre ASC
+2. SELECT * FROM `proveedores` WHERE localidad='quilmes'
+3. SELECT * FROM `envios` WHERE cantidad >= 200 AND cantidad <= 300
+4. SELECT SUM(cantidad) FROM envios
+5. SELECT pNumero from envios LIMIT 3
+            /* DEVUELVE LOS NUMEROS CON MUCHOS DECIMALES */
+7. SELECT envios.cantidad * productos.precio FROM envios, productos WHERE envios.pNumero = productos.pNumero 
+8. SELECT SUM(envios.cantidad) FROM envios WHERE envios.pNumero = 1 AND envios.numero = 102

@@ -22,8 +22,10 @@ function envioReq()
         async: true,
     })
     .done(function(data){
+        alert(data);
         var info = JSON.parse(data);
-        var src = "fotos/" + empleado.foto;
+        alert(info.mensaje);
+        var src = "fotos/" + info.empleado.foto;
 
         lineas = "<h3> Empleado agregado!</h3>";
         lineas += "<img class=\"img-circle\" src =\"" + src + "\" width='150px' height='100px'/>";

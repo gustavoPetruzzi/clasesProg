@@ -52,12 +52,14 @@
             $retorno['mensaje'] = "error agregando los datos";
         }
     }
+    else
+        $retorno['exito'] = false;
         
     if($retorno['exito'])
         $retorno['link'] = "<a href=\"../mostrar.html\"> Mostrar empleados </a>";
     else
         $retorno['link'] ="<a href=\"../index.html\">Volver a cargar </a>"."<p>".$retorno['mensaje']."</p>";
-    
+    fclose($archivo);
     echo json_encode($retorno);
     
     
