@@ -41,7 +41,7 @@ INSERT INTO `envios`(`numero`, `pNumero`, `cantidad`) VALUES (100, 1, 500), (100
             /* DEVUELVE LOS NUMEROS CON MUCHOS DECIMALES */
 7. SELECT envios.cantidad * productos.precio FROM envios, productos WHERE envios.pNumero = productos.pNumero 
 8. SELECT SUM(envios.cantidad) FROM envios WHERE envios.pNumero = 1 AND envios.numero = 102
-
+9. SELECT envios.pNumero FROM envios WHERE numero in ( SELECT proveedores.numero FROM proveedores WHERE proveedores.localidad = 'avellaneda')
 /* Current selection does not contain a unique column. Grid edit, checkbox, Edit, Copy and Delete features are not available. */
 10. SELECT proveedores.domicilio, proveedores.localidad FROM proveedores WHERE proveedores.nombre LIKE '%i%' 
 11. INSERT INTO `productos`(`pNumero`, `pNombre`, `precio`, `tamaño`) VALUES (4, "chocolate", 25.35, "chico")
@@ -49,4 +49,4 @@ INSERT INTO `envios`(`numero`, `pNumero`, `cantidad`) VALUES (100, 1, 500), (100
 13. INSERT INTO `proveedores`(`numero`, `nombre`, `localidad`) VALUES (107, "rosales", "la plata")
 14. UPDATE `productos` SET `precio`=97.50 WHERE tamaño = 'grande' 
 16. DELETE FROM 'productos' WHERE pnumero = 1
-
+17. DELETE FROM `proveedores` WHERE numero NOT IN (SELECT envios.numero FROM envios)
