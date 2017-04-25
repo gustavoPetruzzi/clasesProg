@@ -36,7 +36,7 @@
 
         function toString()
         {
-            return $this->_nombre."-".$this->_apellido."-".$this->_dni."-".$this->_sexo."-";
+            return $this->_nombre." - ".$this->_apellido." - ".$this->_dni." - ".$this->_sexo." - ";
         }
         
         abstract function hablar($idioma);

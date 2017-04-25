@@ -58,20 +58,20 @@ class Producto
 
 //--------------------------------------------------------------------------------//
 //--METODOS DE CLASE
-	public static function Guardar($obj)
+	public static function GuardarDB($obj)
 	{
 		$resultado = FALSE;
 		
-		$objetoGuardarDatos = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoGuardarDatos->RetornarConsulta("INSERT INTO producto (codigo_barra, nombre, path_foto)".
-														 " VALUES(:codigo, :nombre, :path");
+		$objetoGuardarDatos = accesoDatos::DameUnObjetoAcceso();
+		$consulta = $objetoGuardarDatos->RetornarConsulta("INSERT INTO producto (codigo_barra, nombre, path_foto)"
+														 ." VALUES(:codigo, :nombre, :path)");
 		$consulta->bindValue(':codigo', $obj->GetCodBarra(), PDO::PARAM_INT);
-		$consulta->bindValue(':nombre', $obj->GetCodBarra(), PDO::PARAM_);
-		$consulta->bindValue(':codigo', $obj->GetCodBarra(), PDO::PARAM_INT);
+		$consulta->bindValue(':nombre', $obj->GetNombre(), PDO::PARAM_STR);
+		$consulta->bindValue(':path', $obj->GetPathFoto(), PDO::PARAM_STR);
 		
-		return $resultado;
+		return $consulta->execute();
 	}
-	public static function GuardarDB($obj)
+	public static function Guardar($obj)
 	{
 		$resultado = FALSE;
 		
@@ -85,8 +85,9 @@ class Producto
 		{
 			$resultado = TRUE;			
 		}
-		//CIERRO EL ARCHIVO
 		fclose($ar);
+		$resultado = producto::GuardarDB($obj);
+		
 		
 		return $resultado;
 	}

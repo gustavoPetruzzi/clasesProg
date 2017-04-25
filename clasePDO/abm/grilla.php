@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<script>
 	function borrar(id){
-		alert(id);
+		
 	}
 	</script>
 </head>
