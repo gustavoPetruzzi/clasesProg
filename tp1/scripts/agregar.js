@@ -25,7 +25,7 @@ function envioReq()
         async: true,
     })
     .done(function(data){
-        
+        alert(data);
         var info = JSON.parse(data);
         var src = "fotos/" + info.empleado.foto;
         

@@ -46,6 +46,10 @@ class validaciones
         }
         return $retorno;
     }
+
+    public static function validarImagen($imagen){
+       // $foto = isset()
+    }
     public static function validarNombre($nombre) {
         if(strlen($nombre) != 0 && ctype_alpha($nombre)){
             return strtolower($nombre);

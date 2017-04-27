@@ -23,6 +23,11 @@
                     $retorno['empleado'] = $empleado;
 
                 }
+                else
+                {
+                    $retorno['exito'] = false;
+                    $retorno['mensaje'] = 'error cargando la foto';
+                }
             }
             echo json_encode($retorno);
             break;

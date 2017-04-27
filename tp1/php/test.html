@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script>
+
+    $(document).ready(function() {
+        $('#botton').on('click', function() {
+            alert("hola");
+            var formData = new FormData();
+            var foto = $('#foto')[0];
+            formData.append('foto', foto.files[0]);
+            $.ajax({
+                type: 'POST',
+                url: 'tests.php',
+                data: formData,
+                datatype: JSON,
+                processData: false,
+                contentType: false,
+                async: true,
+            })
+            .done(function(data){
+                alert(data)
+            })
+        })
+    })
+    </script>
+
+</head>
+<body>
+    <input type="file" id="foto"></input>
+    <br>
+    <button class="btn btn-primary" id="botton"> agregar </button>
+</body>
+
+</html>
