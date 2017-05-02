@@ -58,6 +58,56 @@ class Producto
 
 //--------------------------------------------------------------------------------//
 //--METODOS DE CLASE
+	public static function modificarProductoDB($producto) {
+		$objetoAccesoDatos = accesoDatos::DameUnObjetoAcceso();
+		$consulta = $objetoAccesoDatos->RetornarConsulta("UPDATE producto SET nombre= :nombre, path_foto = :pathFoto WHERE codigo_barra = :codigo");
+		$consulta->bindValue(':codigo', $producto->GetCodBarra(), PDO::PARAM_INT);
+		$consulta->bindValue(':nombre', $producto->GetNombre(), PDO::PARAM_STR);
+		$consulta->bindValue(':pathFoto', $producto->GetPathFoto(), PDO::PARAM_STR);
+		return $consulta->execute();
+	}
+	public static function buscarProductoDB($codBarra){
+		$objetoAccesoDatos = accesoDatos::DameunObjetoAcceso();
+		$consulta = $objetoAccesoDatos->RetornarConsulta("SELECT codigo_barra AS codBarra, nombre, path_foto AS pathFoto FROM producto WHERE codigo_barra = :codigo");
+		$consulta->bindValue(':codigo', $codBarra, PDO::PARAM_INT);
+		$consulta->setFetchMode(PDO::FETCH_CLASS, 'producto');
+		$consulta->execute();
+		$producto = $consulta->fetch();
+		
+		return $producto;
+	}
+	public static function borrarDB($codBarra)
+	{
+		$objetoAccesoDatos = accesoDatos::DameUnObjetoAcceso();
+		$consulta = $objetoAccesoDatos->RetornarConsulta("DELETE FROM producto WHERE codigo_barra = :codigo");
+		$consulta->bindValue(':codigo', $codBarra, PDO::PARAM_INT);
+		return $consulta->execute();
+	}
+	public static function borrarProducto($codBarra)
+	{
+		$resultado['exito'] = true;
+		$resultado['error'] = "";
+		
+		$producto = Producto::buscarProductoDB($codBarra);
+		$imagen = "archivos/".$producto->GetPathFoto();
+		if(file_exists($imagen)){
+			if(!unlink($imagen)){
+				$resultado['exito'] = false;
+				$resultado['error'] = "No se pudo borrar la imagen";
+			}
+		}
+		else{
+			$resultado['exito'] = false;
+			$resultado['error'] = "la imagen no existe";
+		}
+		
+		if(!Producto::borrarDB($codBarra)) {
+			$resultado['exito'] =  false;
+			$resultado['error'] .= " " ."No se pudo borrar el producto de la base";
+		}
+		
+		return $resultado;
+	}
 	public static function GuardarDB($obj)
 	{
 		$resultado = FALSE;

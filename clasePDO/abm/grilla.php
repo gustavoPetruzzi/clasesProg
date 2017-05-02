@@ -9,11 +9,8 @@
 		
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
-	<script>
-	function borrar(id){
-		
-	}
-	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="scripts/grilla.js"></script>
 </head>
 <body>
 	<a class="btn btn-info" href="index.html">Menu principal</a>
@@ -40,13 +37,13 @@ echo "<table class='table'>
 		</thead>";   	
 
 	foreach ($ArrayDeProductos as $prod){
-		
+		$datos = $prod->GetCodBarra().","."'".$prod->GetNombre()."'".","."'".$prod->GetPathFoto()."'";
 		echo " 	<tr>
 					<td>".$prod->GetCodBarra()."</td>
 					<td>".$prod->GetNombre()."</td>
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
-					<td><button class=\"btn btn-primary\"  onclick=\"borrar(".$prod->GetCodBarra().")\"> borrar </button>
-					<td><button class=\"btn btn-primary\"> modificar </button>
+					<td><button class='btn btn-primary'  onclick=\"borrar(".$prod->GetCodBarra().")\"> borrar </button>
+					<td><button class=\"btn btn-primary\" onclick=\"modificar(".$datos.")\"> modificar </button>
 				</tr>";
 	}	
 echo "</table>";		

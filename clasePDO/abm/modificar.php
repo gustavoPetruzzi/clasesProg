@@ -18,14 +18,14 @@
 			<h1>PRODUCTOS</h1>      
 		</div>
 		<div class="CajaInicio animated bounceInRight">
-			<h1 id="titulo">ALTA-LISTADO - con archivos -</h1>
+			<h1 id="titulo">MODIFICAR - con archivos -</h1>
 
 			<form id="FormIngreso" method="post" enctype="multipart/form-data" action="administracion.php" >
-				<input type="text" name="codBarra" placeholder="Ingrese c&oacute;digo de barras"  />
-				<input type="text" name="nombre" placeholder="Ingrese nombre"  />
-				<input type="file" name="archivo" /> 
-
-				<input type="submit" class="MiBotonUTN" name="guardar" />
+				<input type="text" name="codBarra" value="<?php echo $_POST['codigo']?>"   />
+				<input type="text" name="nombre" value="<?php echo $_POST['nombre']?>"  />
+				<input type="file" name="archivo"/> 
+                <input type="hidden" name="pathViejo" value="<?php echo $_POST['path']?>" />
+				<input type="submit" class="MiBotonUTN" name="modificar" />
 			</form>
 		
 		</div>
