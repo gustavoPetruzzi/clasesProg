@@ -7,13 +7,18 @@ function envioReq()
     
     var formData = new FormData();
     var foto = $('#idFoto')[0];
-    formData.append('nombre', $('#idName').val());
-    formData.append('apellido', $('#idApellido').val());
-    formData.append('dni', $('#idDni').val());
-    formData.append('sexo', $( "input[name='sexo']:checked" ).val());
-    formData.append('legajo', $('#idLegajo').val());
-    formData.append('sueldo', $('#idSueldo').val());
-    formData.append('foto', foto.files[0]);
+    var empleado = {
+        'nombre': $('#idName').val(),
+        'apellido': $('#idApellido').val(),
+        'dni': $('#idDni').val(),
+        'sexo': $( "input[name='sexo']:checked" ).val(),
+        'legajo': $('#idLegajo').val(),
+        'sueldo': $('#idSueldo').val(),
+        'foto': foto.files[0],
+    }
+    for (var key in empleado) {
+        formData.append(key, empleado[key]);
+    }
     formData.append('accion', 'agregar');
     /*
     $.ajax({
@@ -43,9 +48,46 @@ function envioReq()
         alert('NO ANDA');
     });
     */
-    var dni = formData.get('dni');
-    var resultado = validarFormData(formData); 
+    
+    var resultado = validarFormData(empleado); 
     alert(resultado.mensaje);
+}
+function validarFoto(foto) {
+    var valido;
+    var error = '';
+    if(foto !== undefined) {
+        valido = true;
+        var datos = foto.type.split("/");
+        var tipo  = datos[0];
+        var extension = datos[1];
+    }
+
+    else {
+        valido = false;
+        error = ' archivo no subida ';
+    }
+    
+    var extensionesValidas = ['jpg', 'png', 'gif'];
+    if( valido && tipo != 'image'){
+        valido = false;
+        error = 'tipo no valido';
+    }
+    if(valido && foto.size > 1048576){
+        valido = false;
+        error  = 'La imagen es demasiado larga';
+    }
+    if( valido && !tipo == 'image'){
+        valido = false;
+        error = 'tipo no valido';
+    }
+    if(valido && $.inArray(extension, ['jpg', 'png', 'gif', 'bmp']) == -1){
+        valido = false;
+        error = 'extension no valida';
+    }
+    return {
+        valido: valido,
+        error: error
+    };
 }
 function validarString(str){
     
@@ -61,21 +103,21 @@ function validarNumero(numero){
 
 
 
-function validarFormData(formData){
+function validarFormData(empleado){
     var resultado = true;
     var mensaje = "";
-    if(!validarString(formData.get('nombre'))){
+    if(!validarString(empleado.nombre)){
         resultado = false;
         mensaje = 'nombre invalido';
     }
     
-    if(resultado && !validarString(formData.get('apellido'))){
+    if(resultado && !validarString(empleado.apellido)){
         resultado = false;
         mensaje = 'apellido invalido';
     }
-    var dniLength = formData.get('dni');
+    var dniLength = empleado.dni;
     dniLength = dniLength.length;
-    if(resultado  && !validarNumero(formData.get('dni')))
+    if(resultado  && !validarNumero(empleado.dni))
     {
         resultado = false;
         mensaje = 'dni invalido';
@@ -85,19 +127,24 @@ function validarFormData(formData){
         resultado = false;
         mensaje = 'dni muy largo';
     }
-    if(resultado && formData.get('sexo') != 'M' && formData.get('sexo') != 'F') {
+    if(resultado && empleado.sexo != 'M' && empleado.sexo != 'F') {
         resultado = false;
         mensaje = 'sexo invalido';
     }
-    if(resultado && !validarNumero(formData.get('legajo'))){
+    if(resultado && !validarNumero(empleado.legajo)){
         resultado = false;
         mensaje = 'legajo invalido';
     }
-    if(resultado && !validarNumero(formData.get('sueldo'))){
+    if(resultado && !validarNumero(empleado.sueldo)){
         resultado = false;
         mensaje = 'sueldo invalido';
     }
-    
+    if(resultado) {
+        var resultadoFoto = validarFoto(empleado.foto);
+        if(!resultadoFoto.valido) {
+            mensaje = resultadoFoto.error;
+        }
+    }
     return {
         resultado: resultado,
         mensaje: mensaje
