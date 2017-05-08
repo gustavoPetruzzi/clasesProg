@@ -166,9 +166,7 @@ class Producto
 	}
 	public static function TraerTodosLosProductosDB()
 	{
-
 		$ListaDeProductosLeidos = array();
-
 		$objetoAccesoDatos = AccesoDatos::DameUnObjetoAcceso();
 		$consulta = $objetoAccesoDatos->RetornarConsulta("SELECT codigo_barra AS codBarra, nombre, path_foto AS pathFoto FROM producto");
 		$consulta->execute();
