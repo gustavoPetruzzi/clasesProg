@@ -5,7 +5,7 @@ $(document).ready(function() {
             dataType: 'json'
         })
         .done(function(data) {
-            
+            console.log(data);
             var lineas = "";
             var count= 0;
             for (var element in data) {

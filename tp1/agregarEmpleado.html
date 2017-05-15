@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     
-    <script src="scripts/agregar.js"> </script>
+    
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="./bower_components/bootstrapvalidator/dist/css/bootstrapValidator.min.css">
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
-    <script src="./js/validator.js"></script>
+    <script src="scripts/agregar.js"> </script>
     <title>Empleado</title>
 </head>
 
@@ -22,34 +22,56 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-8 ">
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <fieldset>
-                        <legend> Empleado:</legend>
-                        <label for="idName">Nombre :</label>
-                        <input type="text" id="idName" name="nombre">
-                        <br>
-                        <label for="idApellido">Apellido: </label>
-                        <input type="text" id="idApellido" name="apellido">
-                        <br>
-                        <label for="idDni">Dni: </label>
-                        <input type="text" id="idDni" name="dni" placeholder="Ingrese dni sin .(punto)">
-                        <br>
+                <form action="" method="POST" id="login"  enctype="multipart/form-data" class="form-horizontal">
 
-                        <label for="idSexo">Sexo: </label>
-                        <input type="radio" name="sexo" value="M">Masculino
-                        <input type="radio" name="sexo" value="F"> Femenino
-                        <br>
-                        <label for="idLegajo">Legajo:</label>
-                        <input type="text" id="idLegajo" name="legajo" >
-                        <br>
-                        <label for="idSueldo"> Sueldo</label>
-                        <input type="text" id="idSueldo" name="sueldo" placeholder="ingrese solo numeros">
-                        <br>
-                        <input type="file" id="idFoto" name="foto">
-                        <br>
-                    </fieldset>
+                        <div class="form-group">
+                            <label for="idName">Nombre :</label>
+                            <input type="text" class="form-control" id="idName" name="nombre">
+                            <br>
+                        </div>
+                        <div class="form-group">
+                            <label for="idApellido">Apellido: </label>
+                            <input type="text" class="form-control" id="idApellido" name="apellido">
+                            <br>
+                        </div>
+                        <div class="form-group">
+                            <label for="idDni">Dni: </label>
+                            <input type="text" class="form-control" id="idDni" name="dni" placeholder="Ingrese dni sin .(punto)">
+                            <br>
+                        </div>
+                        <div class="radio">
+                            <label>
+                            <input type="radio"  name="sexo" value="M">
+                            Masculino
+                            </label>
+                            <br>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio"  name="sexo" value="F"> 
+                                Femenino
+                            </label>
+                            <br>
+                        </div>
+                        <div class="form-group">
+                            <label for="idLegajo">Legajo:</label>
+                            <input type="text" class="form-control" id="idLegajo" name="legajo" >
+                            <br>
+                        </div>
+                        <div class="form-group">
+                            <label for="idSueldo"> Sueldo</label>
+                            <input type="text" class="form-control" id="idSueldo" name="sueldo" placeholder="ingrese solo numeros">
+                            <br>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control" id="idFoto" name="foto">
+                            <br>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" id="agregar"><span class="glyphicon glyphicon-log-in"></span> Agregar empleado</button>
+                        </div>
                 </form>
-                <button class="btn btn-primary" id="agregar"> Agregar empleado</button>
+                
             </div>
             <div id="resultado" class="col-md-4 col-sm-4">
             </div>

@@ -1,5 +1,38 @@
 $(document).ready( function() {
-    $('#agregar').on('click',envioReq)
+    $('#agregar').on('click',envioReq);
+    $('#login').bootstrapValidator({
+        
+        message: 'Este valor no es valido',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+        },
+
+        fields: {
+            nombre: {
+                validators: {
+                    notEmpty: {
+                        message: 'El nombre es requerido',
+                    }
+                }
+            },
+            apellido: {
+                validators: {
+                    notEmpty: {
+                        message: 'El apellido es requerido',
+                    }
+                }
+            },
+            dni: {
+                validators: {
+                    notEmpty: {
+                        message: 'El dni es requerido',
+
+                    }
+                }
+            }
+        }
+    })
 });
 
 function envioReq()
