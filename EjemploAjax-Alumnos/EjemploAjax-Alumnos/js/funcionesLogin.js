@@ -16,7 +16,10 @@ $("#informe").html("<img src='imagenes/ajax-loader.gif' style='width: 30px;'/>")
 	function validado(retorno){
 		console.info(retorno);
 		if(retorno == ' ingreso'){
-			MostarBotones();
+			MostarLogin();
+			$("#BotonLogin").html("Ir a salir<br>-Sesión-");
+			$("#BotonLogin").addClass("btn btn-danger");				
+			$("#usuario").val("usuario: "+retorno);
 			$("#informe").html(retorno);
 			
 		}
@@ -64,6 +67,12 @@ function deslogear()
 	}).then(validado, error);
 	function validado(retorno){
 		$("#botonesABM").html(retorno);
+		$("#BotonLogin").html("Login<br>-Sesión-");
+		$("#BotonLogin").removeClass("btn btn-danger");		
+		$("#BotonLogin").addClass("btn btn-primary");
+		$("#usuario").val("sin usuario");
+		$("#informe").html("");
+		MostarLogin();		
 	}
 	function error(retorno){
 		console.info(retorno);

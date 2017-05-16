@@ -12,7 +12,12 @@ if(!isset($_SESSION['registrado'])){  ?>
       <form  class="form-ingreso " onsubmit="validarLogin();return false;">
         <h2 class="form-ingreso-heading">Ingrese sus datos</h2>
         <label for="correo" class="sr-only">Correo electrónico</label>
-                <input type="email" id="correo" class="form-control" placeholder="Correo electrónico" required="" autofocus="" value="">
+                <input type="email" id="correo" class="form-control" placeholder="Correo electrónico" required="" autofocus="" value="
+                <?php
+                  if(isset($_COOKIE["usuario"])){
+                    echo $_COOKIE["usuario"];
+                    }
+                ?>">
         <label for="clave" class="sr-only">Clave</label>
         <input type="password" id="clave" minlength="4" class="form-control" placeholder="clave" required="">
         <div class="checkbox">
