@@ -31,20 +31,17 @@
             }
             echo json_encode($retorno);
             break;
-        case 'form':
-            include("../elementos/form.php");
-            break;
+        
         default:
             # code...
             break;
     }
-    /*
+        
     if($retorno['exito'])
         $retorno['link'] = "<a href=\"../mostrar.html\"> Mostrar empleados </a>";
     else
         $retorno['link'] ="<a href=\"../index.html\">Volver a cargar </a>"."<p>";
         $retorno['mensaje']."</p>";
-    */
     
     
     

@@ -1,4 +1,5 @@
 $(document).ready( function() {
+    $('#agregar').on('click',envioReq);
     $('#login').bootstrapValidator({
         
         message: 'Este valor no es valido',
@@ -121,38 +122,64 @@ function validarFoto(foto) {
         error: error
     };
 }
-function validarDatos(){
-    $("#datosEmpleado").bootstrapValidator({
-        
-        message: 'Este valor no es valido',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-        },
+function validarString(str){
+    
+    return /^[a-zA-Z]+$/.test(str);
+    
+}
+function validarNumero(numero){
+    if(numero != "" && !isNaN(numero))
+        return true;
+    else
+        return false;
+}
 
-        fields: {
-            nombre: {
-                validators: {
-                    notEmpty: {
-                        message: 'El nombre es requerido',
-                    }
-                }
-            },
-            apellido: {
-                validators: {
-                    notEmpty: {
-                        message: 'El apellido es requerido',
-                    }
-                }
-            },
-            dni: {
-                validators: {
-                    notEmpty: {
-                        message: 'El dni es requerido',
 
-                    }
-                }
-            }
+
+function validarFormData(empleado){
+    var resultado = true;
+    var mensaje = "";
+    if(!validarString(empleado.nombre)){
+        resultado = false;
+        mensaje = 'nombre invalido';
+    }
+    
+    if(resultado && !validarString(empleado.apellido)){
+        resultado = false;
+        mensaje = 'apellido invalido';
+    }
+    var dniLength = empleado.dni;
+    dniLength = dniLength.length;
+    if(resultado  && !validarNumero(empleado.dni))
+    {
+        resultado = false;
+        mensaje = 'dni invalido';
+    }
+    // VER LO DE LENGTH DEL DNI
+    if( resultado && dniLength > 8){
+        resultado = false;
+        mensaje = 'dni muy largo';
+    }
+    if(resultado && empleado.sexo != 'M' && empleado.sexo != 'F') {
+        resultado = false;
+        mensaje = 'sexo invalido';
+    }
+    if(resultado && !validarNumero(empleado.legajo)){
+        resultado = false;
+        mensaje = 'legajo invalido';
+    }
+    if(resultado && !validarNumero(empleado.sueldo)){
+        resultado = false;
+        mensaje = 'sueldo invalido';
+    }
+    if(resultado) {
+        var resultadoFoto = validarFoto(empleado.foto);
+        if(!resultadoFoto.valido) {
+            mensaje = resultadoFoto.error;
         }
-    })
+    }
+    return {
+        resultado: resultado,
+        mensaje: mensaje
+    };
 }
