@@ -17,9 +17,12 @@
                 {
                         
                     $empleado = new empleado($_POST['nombre'], $_POST['apellido'], $_POST['dni'], $_POST['sexo'], $_POST['legajo'], $_POST['sueldo']);
-                    $archivo = fopen("../empleados.txt","a");  
+                    //$archivo = fopen("../empleados.txt","a");  
                     $empleado->setPathFoto($fotoNueva);
                     move_uploaded_file($_FILES['foto']['tmp_name'], "../fotos/".$fotoNueva);
+                    if(empleado::guardarEmpleados($empleado)){
+                        $retorno['empleado'] = $empleado;
+                    }
                     $retorno['empleado'] = $empleado;
 
                 }
@@ -29,19 +32,28 @@
                     $retorno['mensaje'] = 'error cargando la foto';
                 }
             }
+            if($retorno['exito'])
+                $retorno['link'] = "mostrar.html";
+            else
+                $retorno['link'] ="index.html";           
             echo json_encode($retorno);
             break;
-        
+        case 'modificar':
+            
+        case 'form':
+            include("../elementos/form.php");
+            break;
         default:
             # code...
             break;
     }
-        
+    /*
     if($retorno['exito'])
         $retorno['link'] = "<a href=\"../mostrar.html\"> Mostrar empleados </a>";
     else
         $retorno['link'] ="<a href=\"../index.html\">Volver a cargar </a>"."<p>";
         $retorno['mensaje']."</p>";
+    */
     
     
     

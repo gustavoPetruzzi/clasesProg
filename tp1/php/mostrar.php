@@ -8,7 +8,7 @@
         while(!feof($empleadosHandler))
         {
             $empleadoLinea = fgets($empleadosHandler);
-            $empleadoDatos = explode("-", $empleadoLinea, 7);
+            $empleadoDatos = explode(" - ", $empleadoLinea, 7);
             
             if(count($empleadoDatos) == 7)
             {
