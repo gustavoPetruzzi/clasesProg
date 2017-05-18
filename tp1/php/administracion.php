@@ -39,7 +39,16 @@
             echo json_encode($retorno);
             break;
         case 'modificar':
-            
+            break;
+        case 'borrar':
+            $empleadoBorrado = empleado::borrarEmpleado($_POST['dni']);
+            $retorno = false;
+            if($empleadoBorrado['exito']) {
+                $retorno = empleado::guardarArrayEmpleados($empleadoBorrado['empleados']);
+                
+            }
+            echo $retorno;
+            break;
         case 'form':
             include("../elementos/form.php");
             break;

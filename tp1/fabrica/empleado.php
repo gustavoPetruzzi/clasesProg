@@ -69,6 +69,7 @@
             {
                 $archivoHandler = fgets($archivo);
                 $empleados = explode(" - ", $archivoHandler);
+                $empleados[0] = trim($empleados[0]);
                 if($empleados[0] != ""){
                     $ListaEmpleados[] = new empleado($empleados[0], $empleados[1],$empleados[2], $empleados[3],$empleados[4], $empleados[5], $empleados[6]);
                 }
@@ -90,6 +91,39 @@
             }           
             fclose($archivo);
             return $resultado;
+        }
+        public static function borrarEmpleado($dni) {
+            $retorno['empleados'] = empleado::traerEmpleados();
+            $retorno['exito'] = false;
+            foreach ($retorno['empleados'] as $key => $empleado ) {    
+                if($empleado->getDni() == $dni) {
+                    if(copy('../empleados.txt', 'backup.txt')){
+                        $foto = $empleado->getPathFoto();
+                        unset($retorno['empleados'][$key]);
+                        unlink($foto);
+                        $retorno['exito'] = true;
+                        break;    
+                    }
+                }
+            }
+
+            return $retorno;
+        }
+        
+        public static function guardarArrayEmpleados($array) {
+            $archivo = '../empleados.txt';
+            $resultado = false;
+            $handler = fopen($archivo, 'w');
+            foreach ($array as $empleado ) {
+                $resultado = false;
+                $cantidad = fwrite($handler, $empleado->toString());
+                if($cantidad > 0) {
+                    $resultado = true;
+                }   
+            }
+            fclose($handler);
+            return $resultado;
+            
         }
     }
     

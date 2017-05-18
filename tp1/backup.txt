@@ -1,2 +1,3 @@
 gustavo - petruzzi - 36594810 - M - 41 - 10000 - 36594810-petruzzi.jpg
+perro - petruzzi - 9999999 - M - 111 - 11111 - 9999999-petruzzi.png
 persona - empleado - 12345678 - M - 1 - 1 - 12345678-empleado.jpg

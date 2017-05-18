@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./bower_components/bootstrapvalidator/dist/css/bootstrapValidator.min.css">
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
     <script src="scripts/modificar.js"></script>
     <title>Empleados</title>
 </head>
@@ -26,25 +27,35 @@
         </div>
         <div class="modal-body" style="padding:40px 50px;">
           <form role="form">
+
             <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+              <label for="nombre"> nombre</label>
+              <input type="text" class="form-control" id="nombre" placeholder="Enter email">
             </div>
+
             <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+              <label for="apellido"> apellido</label>
+              <input type="text" class="form-control" id="apellido" placeholder="">
             </div>
-            <div class="checkbox">
-              <label><input type="checkbox" value="" checked>Remember me</label>
+            
+            <div class="form-group">
+              <label for="dni"> dni</label>
+              <input type="text" class="form-control" id="dni" placeholder="">
             </div>
-              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+
+            <div class="form-group">
+              <label for="legajo"> legajo</label>
+              <input type="text" class="form-control" id="legajo" placeholder="">
+            </div>
+            
+            <div class="form-group">
+              <label for="sueldo"> sueldo</label>
+              <input type="text" class="form-control" id="sueldo" placeholder="">
+            </div>
+              <button  class="btn btn-success btn-block"> Modificar</button>
           </form>
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Not a member? <a href="#">Sign Up</a></p>
-          <p>Forgot <a href="#">Password?</a></p>
-        </div>
+    
       </div>
       
     </div>
