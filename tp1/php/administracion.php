@@ -23,7 +23,10 @@
                     if(empleado::guardarEmpleados($empleado)){
                         $retorno['empleado'] = $empleado;
                     }
-                    $retorno['empleado'] = $empleado;
+                    else{
+                        $retorno['exito'] =false;
+                        $retorno['mensaje'] = 'error guardando el empleado';
+                    }
 
                 }
                 else
@@ -38,7 +41,32 @@
                 $retorno['link'] ="index.html";           
             echo json_encode($retorno);
             break;
+        case 'buscar':
+            echo empleado::buscarEmpleado($_POST['dni']);
+            break;
         case 'modificar':
+            var_dump("LASLDASD");
+            /*
+            $empleados = empleado::traerEmpleados();
+            $resultado = false;
+            foreach ($empleados as $empleado ) {
+                if($empleado->getDni() == $_POST['dni']){
+                    $empleado->setNombre($_POST['nombre']);
+                    $empleado->setbreak;Apellido($_POST['apellido']);
+                    $empleado->setLegajo($_POST['legajo']);
+                    $empleado->setSueldo($_POST['sueldo']);
+                    $resultado = true;
+                }
+            }
+            if($resultado) {
+                echo empleado::guardarArrayEmpleados($empleados);
+                var_dump($empleados);
+            }
+            else{
+                echo false;
+            }
+            */
+
             break;
         case 'borrar':
             $empleadoBorrado = empleado::borrarEmpleado($_POST['dni']);

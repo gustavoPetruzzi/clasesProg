@@ -18,6 +18,12 @@
             $this->_pathFoto = $pathFoto;   
         }
         /*                GETTERS           */
+        function setLegajo($legajo){
+            $this->_legajo = $legajo;
+        }
+        function setSueldo($sueldo){
+            $this->_sueldo = $sueldo;
+        }
         function getLegajo()
         {
             return $this->_legajo;
@@ -98,10 +104,13 @@
             foreach ($retorno['empleados'] as $key => $empleado ) {    
                 if($empleado->getDni() == $dni) {
                     if(copy('../empleados.txt', 'backup.txt')){
-                        $foto = $empleado->getPathFoto();
-                        unset($retorno['empleados'][$key]);
-                        unlink($foto);
-                        $retorno['exito'] = true;
+                        $foto = trim(realpath("../fotos/")."/".$empleado->getPathFoto());
+                        
+                        if(is_writable($foto)){
+                            unset($retorno['empleados'][$key]);
+                            unlink($foto);
+                            $retorno['exito'] = true;
+                        }
                         break;    
                     }
                 }
@@ -123,7 +132,18 @@
             }
             fclose($handler);
             return $resultado;
-            
+        }
+        public static function buscarEmpleado($dni) {
+            $Empleados = empleado::traerEmpleados();
+            $retorno['exito'] = false;
+            foreach($Empleados as $empleado) {
+                if($empleado->getDni() == $dni) {
+                    $retorno['empleado'] = $empleado;
+                    $retorno['exito'] = true;
+                    break;
+                }
+            }
+            echo json_encode($retorno);
         }
     }
     

@@ -16,7 +16,7 @@
             $this->_dni = $dni;
             $this->_sexo = $sexo;
         }
-
+        /* GETTERS Y SETTERS */
         function getApellido()
         {
             return $this->_apellido;
@@ -32,6 +32,22 @@
         function getSexo()
         {
             return $this->_sexo;
+        }
+
+        function setNombre($nombre){
+            $this->_nombre = $nombre;
+        }
+
+        function setApellido($apellido) {
+            $this->_apellido = $apellido;
+        }
+
+        function setDni($dni) {
+            $this->_dni = $dni;
+        }
+
+        function setSexo($sexo){
+            $this->_sexo = $sexo;
         }
 
         function toString()

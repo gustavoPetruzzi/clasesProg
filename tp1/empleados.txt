@@ -1,2 +1,3 @@
 gustavo - petruzzi - 36594810 - M - 41 - 10000 - 36594810-petruzzi.jpg
 persona - empleado - 12345678 - M - 1 - 1 - 12345678-empleado.jpg
+sonic - heasda - 1234221 - M - 321 - 3333 - 1234221-heasda.jpg

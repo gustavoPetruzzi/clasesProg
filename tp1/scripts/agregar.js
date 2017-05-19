@@ -66,18 +66,22 @@ function envioReq()
         })
         .done(function(data){
             var info = JSON.parse(data);
-            var src = "fotos/" + info.empleado.foto;
-            
-            lineas = "<h3> Empleado agregado!</h3>";
-            lineas += "<img class=\"img-circle\" src =\"" + src + "\" width='150px' height='100px'/>";
-            lineas += "<h3>" + info.empleado.nombre + " " + info.empleado.apellido + "</h3>";
-            lineas += "<p>"+"Dni: " + info.empleado.dni + "</p>";
-            lineas += "<p>"+"Sexo: " + info.empleado.sexo + "</p>";
-            lineas += "<p>"+"Legajo: " + info.empleado.legajo + "</p>";
-            lineas += "<p>"+"Sueldo: $" + info.empleado.sueldo + "</p>";
-            $("#resultado").html(lineas);
-            var boton = "<a class='btn btn-primary' href=" + info.link+ " role='button'>Mostrar Empleados.</a>"
-            $("#resultado").append(boton);
+            if(info.exito == true){
+                var src = "fotos/" + info.empleado.foto;
+                
+                lineas = "<h3> Empleado agregado!</h3>";
+                lineas += "<img class=\"img-circle\" src =\"" + src + "\" width='150px' height='100px'/>";
+                lineas += "<h3>" + info.empleado.nombre + " " + info.empleado.apellido + "</h3>";
+                lineas += "<p>"+"Dni: " + info.empleado.dni + "</p>";
+                lineas += "<p>"+"Sexo: " + info.empleado.sexo + "</p>";
+                lineas += "<p>"+"Legajo: " + info.empleado.legajo + "</p>";
+                lineas += "<p>"+"Sueldo: $" + info.empleado.sueldo + "</p>";
+                $("#resultado").html(lineas);
+                var boton = "<a class='btn btn-primary' href=" + info.link+ " role='button'>Mostrar Empleados.</a>"
+                $("#resultado").append(boton);
+            }
+            else
+                alert(info.mensaje);
         })
         .fail(function(data){
             alert('NO ANDA');
