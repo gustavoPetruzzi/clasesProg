@@ -34,7 +34,7 @@
         }
         function getPathFoto()
         {
-            return $this->_pathFoto;
+            return trim($this->_pathFoto);
         }
 
         function setPathFoto($path)
@@ -125,7 +125,7 @@
             $handler = fopen($archivo, 'w');
             foreach ($array as $empleado ) {
                 $resultado = false;
-                $cantidad = fwrite($handler, $empleado->toString());
+                $cantidad = fwrite($handler, $empleado->toString()."\n");
                 if($cantidad > 0) {
                     $resultado = true;
                 }   

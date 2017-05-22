@@ -1,5 +1,21 @@
 $(document).ready(function() {
     traerEmpleados();
+    $("#modificar").click(function(){
+                var datos = new FormData();
+                datos.append('accion', 'modificar');
+                datos.append('nombre', $("#nombre").val());
+                datos.append('apellido',$("#apellido").val());
+                datos.append('dni',$("#dni").val());
+                datos.append('legajo',$("#legajo").val());
+                datos.append('sueldo',$("#sueldo").val());
+                $.ajax({
+                    url:"php/administracion.php",
+                    data: datos,
+                    type:'POST',
+                    processData: false,
+                    contentType: false,
+                }).then(modificado, errorBorrando);
+            })
 });
 
 function empleado(dni){
@@ -19,30 +35,16 @@ function datosModificado(data){
             $("#apellido").val(data.empleado.apellido);
             $("#dni").val(data.empleado.dni);
             $("#legajo").val(data.empleado.legajo);
-            $("#sueldo").val(data.empleado.sueldo);
-            $("#modificar").click(function(){
-                var datos = new FormData();
-                datos.append('accion', 'modificar');
-                datos.append('nombre', $("#nombre").val());
-                datos.append('apellido',$("#apellido").val());
-                datos.append('dni',$("#dni").val());
-                datos.append('legajo',$("#legajo").val());
-                datos.append('sueldo',$("#sueldo").val());
-                $.ajax({
-                    url:"php/administracion.php",
-                    data: {accion : 'modificar' },
-                    type:'POST',
-                    
-                }).then(test, errorBorrando);
-            })
+            $("#sueldo").val(data.empleado.sueldo);            
         });
 
         $("#myModal").modal();
     }
 }
 
-function test(data){
-    alert("La puta madre");
+function modificado(){
+    $("#myModal").modal('toggle');
+    traerEmpleados();
 }
 
 

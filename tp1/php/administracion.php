@@ -45,27 +45,28 @@
             echo empleado::buscarEmpleado($_POST['dni']);
             break;
         case 'modificar':
-            var_dump("LASLDASD");
-            /*
             $empleados = empleado::traerEmpleados();
             $resultado = false;
             foreach ($empleados as $empleado ) {
                 if($empleado->getDni() == $_POST['dni']){
                     $empleado->setNombre($_POST['nombre']);
-                    $empleado->setbreak;Apellido($_POST['apellido']);
+                    $empleado->setApellido($_POST['apellido']);
                     $empleado->setLegajo($_POST['legajo']);
                     $empleado->setSueldo($_POST['sueldo']);
+                    $nuevoPath = $_POST['dni']."-".$_POST['apellido'].".jpg";
+                    rename("../fotos/".$empleado->getPathFoto(), "../fotos/".$nuevoPath);
+                    $empleado->setPathFoto($nuevoPath);
                     $resultado = true;
+                    break;
                 }
             }
             if($resultado) {
                 echo empleado::guardarArrayEmpleados($empleados);
-                var_dump($empleados);
             }
             else{
                 echo false;
             }
-            */
+            
 
             break;
         case 'borrar':
